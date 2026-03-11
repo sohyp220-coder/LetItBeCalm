@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>ليطمئن</title>
+</head>
+<body>
+  
+  <header>{ بســــم اللــه الرحمـــن الرحيـــم }
+      <br>
+       تطبيق القرآن والذكر 
+  </header>
+  
+  <div>: الصلاة القادمة
+  </div>
+  <div class="cont">
+    <img src="istekame.jpg" alt="">
+  </div>
+  
+  
+  <div id="app">
+    <router-link to="quran" class="q">قرآن كريم</router-link>
+    <router-link to="azkar" class="z">اذكار</router-link>
+    <router-link to="sabah" class="s">سبحة إلكترونية</router-link>
+    <router-view></router-view>
+  </div>
+  
+  
+  <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.js"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="script.js"></script>
+  
+
+</body>
+</html>
