@@ -7,7 +7,7 @@ const quran = {
       <div v-if="!selectedSurah">
         <h3>فهرس السور : </h3>
         <ul class="surah-list" style="list-style: none; padding: 0;">
-          <li v-for="surah in surahs" :key="surah.number" @click="fetchSurah(surah.number)" class="surah-card" style="cursor:pointer; border:1px solid #ddd; margin:5px; padding:10px;">
+          <li v-for="surah in surahs" :key="surah.number" @click="fetchSurah(surah.number)" class="surah-card" >
             <span>{{ surah.number }} - {{ surah.name }}</span>
             <small> ({{ surah.numberOfAyahs }} آية)</small>
           </li>
@@ -21,9 +21,10 @@ const quran = {
         <hr>
         <div class="ayah-text" >
           <span v-for="ayah in selectedSurah.ayahs" :key="ayah.number">
+           </br>
             {{ ayah.text }}
             </br>
-            <b style="color: green"> ({{ ayah.numberInSurah }}) </b>
+            <b > ({{ ayah.numberInSurah }}) </b>
           </span>
         </div>
       </div>

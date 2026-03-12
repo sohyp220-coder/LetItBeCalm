@@ -15,6 +15,7 @@ img {
     z-index: 100000;
     margin-top: 10px;
     margin-bottom: 5px;
+    opacity: 0;
 }
 
 
@@ -102,41 +103,75 @@ div:not(.cont,#app) {
 .surah-list {
     color: #008774;
     text-align: auto;
-    width: 500px;
+    width: 300px;
     height: 100px;
     transform: translateY(160px);
     margin: none;
+    border-radius: 10px;
+}
+
+
+.surah-list li {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 2px 2px #E5E5E5;
+    border-radius: 10px;
+    border: 2px solid #525252;
+    padding: 5px;
+    margin: 10px 0 5px 0;
 }
 
 h3  {
-    transform: translate(50px,180px);
+    border: 2px #5B93A8 solid;
+    border-radius: 5px;
+    transform: translate(0px,180px);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
 }
 
 .back-btn {
+    transform: translate(-150px,-160px);
     color: #EBFFBF;
     background: #3580E4;
     width: 100px;
     border: 1px solid #399D7A;
     border-radius: 5px;
+    position: absolute;
+    right: 2px;
 }
 
-.ayah-text {
-    
+.ayah-text  {
+    height: 100px;
+    transform: translateY(-190px);
+    width: 300px;
+    background: #1D431E;
+    border-radius: 5px;
+    border: 1px #28642B solid;
+    position: absolute;
+    top: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+
+.ayah-text span {
+    background: #1D431E;
+    color: #DCCFB8;
+    padding: 0px;
 }
 
 h4 {
+    transform: translateY(-200px);
     color: #E5DFDF;
     background: #000;
     width: 100px;
-    height: 80px;
+    height: 60px;
     border: 1px solid #41C1E3;
     border-radius: 10px;
     display: inline-block;
     z-index: 100000;
-    padding: 2px;
+    padding: 10px;
+    
 }
 
