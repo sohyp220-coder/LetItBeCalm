@@ -98,3 +98,45 @@ div:not(.cont,#app) {
 }
 
 
+
+.surah-list {
+    color: #008774;
+    text-align: auto;
+    width: 500px;
+    height: 100px;
+    transform: translateY(160px);
+    margin: none;
+}
+
+h3  {
+    transform: translate(50px,180px);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-btn {
+    color: #EBFFBF;
+    background: #3580E4;
+    width: 100px;
+    border: 1px solid #399D7A;
+    border-radius: 5px;
+}
+
+.ayah-text {
+    
+}
+
+h4 {
+    color: #E5DFDF;
+    background: #000;
+    width: 100px;
+    height: 80px;
+    border: 1px solid #41C1E3;
+    border-radius: 10px;
+    display: inline-block;
+    z-index: 100000;
+    padding: 2px;
+}
+

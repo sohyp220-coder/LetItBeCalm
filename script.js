@@ -5,7 +5,7 @@ const quran = {
     <div class="container" style="direction: rtl;">
       <!-- الجزء الأول: قائمة السور -->
       <div v-if="!selectedSurah">
-        <h3 style="text-align:center">فهرس السور</h3>
+        <h3>فهرس السور : </h3>
         <ul class="surah-list" style="list-style: none; padding: 0;">
           <li v-for="surah in surahs" :key="surah.number" @click="fetchSurah(surah.number)" class="surah-card" style="cursor:pointer; border:1px solid #ddd; margin:5px; padding:10px;">
             <span>{{ surah.number }} - {{ surah.name }}</span>
@@ -17,11 +17,13 @@ const quran = {
       <!-- الجزء الثاني: عرض آيات السورة -->
       <div v-else class="surah-view">
         <button @click="selectedSurah = null" class="back-btn">⬅ عودة للفهرس</button>
-        <h2 style="text-align:center; color:#2c3e50">{{ selectedSurah.name }}</h2>
+        <h4>{{ selectedSurah.name }}</h4>
         <hr>
-        <div class="ayah-text" style="line-height: 2.5; font-size: 1.2rem; text-align: justify;">
+        <div class="ayah-text" >
           <span v-for="ayah in selectedSurah.ayahs" :key="ayah.number">
-            {{ ayah.text }} <b style="color: green"> ({{ ayah.numberInSurah }}) </b>
+            {{ ayah.text }}
+            </br>
+            <b style="color: green"> ({{ ayah.numberInSurah }}) </b>
           </span>
         </div>
       </div>
@@ -29,8 +31,8 @@ const quran = {
   `,
   data() {
     return {
-      surahs: [], 
-      selectedSurah: null 
+      surahs: [],
+      selectedSurah: null
     }
   },
   mounted() {
@@ -38,8 +40,8 @@ const quran = {
     fetch('http://api.alquran.cloud/v1/surah')
       .then(res => res.json())
       .then(data => {
-         this.surahs = data.data; // هنا التعديل المهم
-         console.log(surahs)
+        this.surahs = data.data; // هنا التعديل المهم
+        console.log(surahs)
       })
       .catch(err => console.error("Error fetching surahs:", err));
   },
@@ -89,7 +91,7 @@ const home = {
     }, 1000)
   }
 }
-                                
+
 const routes = [
   { path: '/quran', component: quran },
   { path: '/azkar', component: azkar },
@@ -107,3 +109,5 @@ const router = VueRouter.createRouter({
 const app = createApp({})
 app.use(router)
 app.mount('#app')
+
+
