@@ -1,26 +1,25 @@
 const { createApp } = Vue;
-
 // مكون القرآن (الأساسي)
 const quran = {
   template: `
-    <div class="container">
-      <!-- الجزء الأول: قائمة السور (تظهر لو مفيش سورة مختارة) -->
+    <div class="container" style="direction: rtl;">
+      <!-- الجزء الأول: قائمة السور -->
       <div v-if="!selectedSurah">
         <h3 style="text-align:center">فهرس السور</h3>
-        <ul class="surah-list">
-          <li v-for="surah in surahs" :key="surah.number" @click="fetchSurah(surah.number)" class="surah-card">
+        <ul class="surah-list" style="list-style: none; padding: 0;">
+          <li v-for="surah in surahs" :key="surah.number" @click="fetchSurah(surah.number)" class="surah-card" style="cursor:pointer; border:1px solid #ddd; margin:5px; padding:10px;">
             <span>{{ surah.number }} - {{ surah.name }}</span>
-            <small>{{ surah.numberOfAyahs }} آية</small>
+            <small> ({{ surah.numberOfAyahs }} آية)</small>
           </li>
         </ul>
       </div>
 
-      <!-- الجزء الثاني: عرض آيات السورة (تظهر عند الضغط) -->
+      <!-- الجزء الثاني: عرض آيات السورة -->
       <div v-else class="surah-view">
         <button @click="selectedSurah = null" class="back-btn">⬅ عودة للفهرس</button>
         <h2 style="text-align:center; color:#2c3e50">{{ selectedSurah.name }}</h2>
         <hr>
-        <div class="ayah-text">
+        <div class="ayah-text" style="line-height: 2.5; font-size: 1.2rem; text-align: justify;">
           <span v-for="ayah in selectedSurah.ayahs" :key="ayah.number">
             {{ ayah.text }} <b style="color: green"> ({{ ayah.numberInSurah }}) </b>
           </span>
@@ -30,40 +29,75 @@ const quran = {
   `,
   data() {
     return {
-      surahs: [], // لتخزين القائمة
-      selectedSurah: null // لتخزين بيانات السورة اللي ضغطنا عليها
+      surahs: [], 
+      selectedSurah: null 
     }
   },
   mounted() {
-    // نجيب الفهرس بس في البداية (خفيف جداً)
-    fetch('https://api.alquran.cloud')
+    // جلب قائمة السور وتخزينها في surahs
+    fetch('http://api.alquran.cloud/v1/surah')
       .then(res => res.json())
-      .then(json => this.surahs = json.data)
+      .then(data => {
+         this.surahs = data.data; // هنا التعديل المهم
+         console.log(surahs)
+      })
+      .catch(err => console.error("Error fetching surahs:", err));
   },
   methods: {
-    // دالة لجلب تفاصيل السورة بالرقم
     fetchSurah(id) {
-      fetch(`https://api.alquran.cloud/${id}/quran-uthmani`)
+      // جلب تفاصيل السورة
+      fetch(`http://api.alquran.cloud/v1/surah/${id}/quran-uthmani`)
         .then(res => res.json())
         .then(json => {
-          this.selectedSurah = json.data;
-          window.scrollTo(0, 0); // نطلع لأول الصفحة
+          this.selectedSurah = json.data; // التعديل هنا (json.data مباشرة)
+          window.scrollTo(0, 0);
         })
+        .catch(err => alert("خطأ في تحميل السورة"));
     }
   }
 }
 
 // مكونات فرعية بسيطة
-const azkar = { template: '<div class="page"><h1>الأذكار قريباً...</h1></div>' }
-const sabah = { template: '<div class="page"><h1>السبحة الإلكترونية</h1></div>' }
+const azkar = {
+  template: '<div class="page"><h1>الأذكار قريباً...</h1></div>'
+}
+const sabah = {
+  template: '<div class="page"><h1>السبحة الإلكترونية</h1></div>'
+}
 
-// إعدادات الرواتر
+
+const home = {
+  template: `
+   <header>{ بســــم اللــه الرحمـــن الرحيـــم }
+      <br>
+       تطبيق القرآن والذكر 
+  </header>
+  
+  <div>: الصلاة القادمة
+  </div>
+  <div class="cont">
+    <img src="istekame.jpg" alt="">
+  </div>
+  `,
+  mounted() {
+    setTimeout(() => {
+      const img = document.querySelector('img')
+      img.style.width = '60px'
+      img.style.height = '40px'
+      img.style.left = '2px'
+      img.style.top = '95px'
+    }, 1000)
+  }
+}
+                                
 const routes = [
   { path: '/quran', component: quran },
   { path: '/azkar', component: azkar },
   { path: '/sabah', component: sabah },
-  { path: '/', redirect: '/quran' } // افتراضي يفتح القرآن
+  { path: '/', component: home }
 ]
+
+
 
 const router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),

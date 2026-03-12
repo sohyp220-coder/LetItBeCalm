@@ -9,28 +9,21 @@
 </head>
 <body>
   
-  <header>{ بســــم اللــه الرحمـــن الرحيـــم }
-      <br>
-       تطبيق القرآن والذكر 
-  </header>
-  
-  <div>: الصلاة القادمة
-  </div>
-  <div class="cont">
-    <img src="istekame.jpg" alt="">
-  </div>
+ 
   
   
   <div id="app">
-    <router-link to="quran" class="q">قرآن كريم</router-link>
-    <router-link to="azkar" class="z">اذكار</router-link>
-    <router-link to="sabah" class="s">سبحة إلكترونية</router-link>
+    <router-link to="/" active-class = "active"></router-link>
+    <router-link to="quran" class="q" active-class = "active">قرآن كريم</router-link>
+    <router-link to="azkar" class="z" active-class = "active">اذكار</router-link>
+    <router-link to="sabah" class="s" active-class = "active">سبحة إلكترونية</router-link>
     <router-view></router-view>
   </div>
   
   
-  <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.js"></script>
+ 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/vue-router@4/dist/vue-router.global.js"></script>
   <script src="script.js"></script>
   
 

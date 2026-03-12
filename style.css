@@ -59,6 +59,7 @@ div:not(.cont,#app) {
     border-radius: 10px;
     border: none;
     font-size: 30px;
+    text-decoration: none;
 }
 
 .q {
@@ -76,6 +77,7 @@ div:not(.cont,#app) {
     border-radius: 10px;
     border: none;
     font-size: 30px;
+    text-decoration: none;
 }
 
 .s {
@@ -92,4 +94,7 @@ div:not(.cont,#app) {
     border-radius: 10px;
     border: none;
     font-size: 30px;
+    text-decoration: none;
 }
+
+
