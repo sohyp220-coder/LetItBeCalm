@@ -1,7 +1,9 @@
 body {
     color: #345D17;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
+    background: url('q.jpg');
+    width: 200px;
 }
 
 
@@ -15,7 +17,7 @@ img {
     z-index: 100000;
     margin-top: 10px;
     margin-bottom: 5px;
-    opacity: 0;
+    opacity: 1;
 }
 
 
@@ -34,7 +36,18 @@ header {
 }
 
 
-div:not(.cont,#app) {
+.sa {
+    color: lawngreen;
+    position: absolute;
+    top: 95px;
+    right: 2px;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 25px;
+}
+
+div:not(.sa , .cont ,#app) {
     color: seagreen;
     position: absolute;
     top: 95px;
@@ -42,8 +55,8 @@ div:not(.cont,#app) {
     height: 100px;
     margin-top: 10px;
     margin-bottom: 5px;
+    font-size: 25px;
 }
-
 
 .z {
     color: #eee;
@@ -175,3 +188,29 @@ h4 {
     
 }
 
+
+
+h1  {
+    color: lightgoldenrodyellow;
+    background: darkcyan;
+    position: relative;
+    z-index: 2222²222;
+    
+}
+
+
+
+button {
+    color: #EBFFBF;
+    background: #3580E4;
+    width: auto;
+    border: 1px solid #399D7A;
+    border-radius: 5px;
+    margin: 0 5px 0 5px;
+}
+
+
+h2 {
+    color: greenyellow;
+    font-size: 30px;
+}
