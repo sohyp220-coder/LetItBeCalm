@@ -37,15 +37,28 @@ header {
 
 
 .sa {
-    color: lawngreen;
+    color: #FFD09A;
     position: absolute;
-    top: 95px;
+    top: 400px;
     right: 2px;
-    height: 100px;
+    height: auto;
     margin-top: 10px;
     margin-bottom: 5px;
     font-size: 25px;
+    background-color: #533109;
+    border-radius: 10px;
+    transform: translateX(-25px);
+    width: 80%;
 }
+
+.sa p {
+    display: block;
+    margin: 0;
+    margin-right: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
 
 div:not(.sa , .cont ,#app) {
     color: seagreen;
@@ -214,3 +227,5 @@ h2 {
     color: greenyellow;
     font-size: 30px;
 }
+
+

@@ -158,29 +158,59 @@ const sapah = {
   `
 }
 const home = {
+  data() {
+    return {
+      timings: {}
+    }
+  },
   template: `
-   <header>{ بســــم اللــه الرحمـــن الرحيـــم }
-      <br>
-       تطبيق القرآن والذكر 
-  </header>
-  
-  <div class='sa'>: الصلاة القادمة
-  </div>
-  <div class="cont">
-    <img src="istekame.jpg" alt="">
-  </div>
+    <header>{ بســــم اللــه الرحمـــن الرحيـــم } <br> تطبيق القرآن والذكر </header>
+    <div class='sa'>
+      <p>الفجر: {{timings.Fajr}}</p>
+      <p>الشروق: {{timings.Sunrise}}</p>
+      <p>الظهر: {{timings.Dhuhr}}</p>
+      <p>العصر: {{timings.Asr}}</p>
+      <p>الغروب: {{timings.Sunset}}</p>
+      <p>المغرب: {{timings.Maghrib}}</p>
+      <p>العشاء: {{timings.Isha}}</p>
+    </div>
+    <div class="cont">
+      <img src="istekame.jpg" alt="">
+    </div>
   `,
   mounted() {
     setTimeout(() => {
       const img = document.querySelector('img')
-      img.style.width = '60px'
-      img.style.height = '40px'
-      img.style.left = '2px'
-      img.style.top = '95px'
-    }, 1000)
+      img.style.opacity = '.0'
+      img.style.opacity = '.5'
+      img.style.height = '70px'
+      img.style.width = '70px'
+      img.style.borderRadius = '50%'
+      img.style.top = '80px'
+      img.style.right = '10px'
+      img.style.opacity = '.5'
+      img.style.opacity = '1'
+    }, 500)
+    fetch('https://ipapi.co/json')        
+          .then(res => res.json())
+          .then(data => {
+             let date = new Date();
+             let day = date.getDate();
+             let month = date.getMonth() + 1;
+             let year = date.getFullYear();
+             let latitude = data.latitude
+             let longitude = data.longitude
+             let city = data.city
+             let country = data.country
+             let country_name = data.country_name
+        fetch(`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=5`)       
+          .then(res => res.json())
+          .then(data => {
+            this.timings = data.data['timings']
+          })
+      })
   }
 }
-
 const routes = [
   { path: '/quran', component: quran },
   { path: '/azkar', component: azkar },
@@ -198,5 +228,3 @@ const router = VueRouter.createRouter({
 const app = createApp({})
 app.use(router)
 app.mount('#app')
-
-
